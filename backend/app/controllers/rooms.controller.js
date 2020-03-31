@@ -37,29 +37,29 @@ const createRoomFileSync = () => {
   const bloxRoom = [
     {
       header_color: "#4EB585",
-      blox_color: '#56D59A'
-    }
+      blox_color: "#56D59A",
+    },
     {
       header_color: "#2196F3",
-      blox_color: '#2380C1'
-    }
+      blox_color: "#2380C1",
+    },
     {
       header_color: "#EA8B68",
-      blox_color: '#D66C45'
-    }
+      blox_color: "#D66C45",
+    },
     {
       header_color: "#2196F3",
-      blox_color: '#13628E'
-    }
+      blox_color: "#13628E",
+    },
     {
       header_color: "#D82E60",
-      blox_color: '#B4254F'
-    }
+      blox_color: "#B4254F",
+    },
     {
       header_color: "#4D4595",
-      blox_color: '#1F39D8'
-    }
-  ]
+      blox_color: "#1F39D8",
+    },
+  ];
 
   for (const roomName of roomNames) {
     roomsData.push({
