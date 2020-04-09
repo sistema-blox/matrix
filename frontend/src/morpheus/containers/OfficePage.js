@@ -21,6 +21,11 @@ import Loading from "../../components/Loading";
 const useStyles = makeStyles(theme => ({
   root: {
     padding: theme.spacing(3)
+  },
+  container:
+  bibluebuttonWindow: {
+    width: '100%',
+    height: '100vh',
   }
 }));
 
@@ -35,6 +40,7 @@ const OfficePage = ({
 }) => {
   const classes = useStyles();
   const [isLoading, setIsLoading] = useState(false)
+  const [joinRoom, setJoinRoom] = useState(false)
   useState(() => {
     if (currentRoom && match.params.roomId !== currentRoom.id) {
       const findResult = rooms.find(r => r.id === match.params.roomId);
@@ -70,7 +76,7 @@ const OfficePage = ({
         createParams.append('checksum', createChecksum)
         api.get(`/create?${createParams.toString()}`).then(() => { const joinParams = new URLSearchParams({
           meetingID: roomId,
-          redirect: true,
+          redirect: false,
           password: 'mp',
           fullName: userName,
         })
@@ -79,34 +85,49 @@ const OfficePage = ({
         joinParams.append('checksum', joinChecksum)
 
         window.open(`${environment.url}/join?${joinParams.toString()}`)
+        // setJoinRoom((`${environment.url}/join?${joinParams.toString()}`))
+
        })
        setIsLoading(false)
       }catch {
         console.log('não foi possível entrar na sala')
+      }finally {
+        setJoinRoom('https://webconference.education/html5client/join?sessionToken=kqxnwbywomwaygzb')
+
       }
   }
+
+
+  console.log('join', joinRoom)
 
   return (
     isLoading ? (
       <Loading />
     ) : (
       <div className={classes.root}>
-      <Grid>
-      {office.map(room => (
-        <RoomCard
-        {...room}
-        key={room.id}
-        headerColor={rooms.find(item => room.id === item.id).header_color}
-        bloxColor={rooms.find(item => room.id === item.id).blox_color}
-        onEnterRoom={() => {
-          emitEnterInRoom(room.id);
-          onSetCurrentRoom(room);
-          history.replace(`/morpheus/office/${room.id}`);
-        }}
-        enteringVirtualRooom={enteringVirtualRooom}
-        />
-        ))}
-        </Grid>
+        {joinRoom ? (
+          <div className={classes.container}>
+            <embed className={classes.bibluebuttonWindow} src={joinRoom} />
+          </div>
+        ) : (
+
+          <Grid>
+          {office.map(room => (
+            <RoomCard
+            {...room}
+            key={room.id}
+            headerColor={rooms.find(item => room.id === item.id).header_color}
+            bloxColor={rooms.find(item => room.id === item.id).blox_color}
+            onEnterRoom={() => {
+              emitEnterInRoom(room.id);
+              onSetCurrentRoom(room);
+              history.replace(`/morpheus/office/${room.id}`);
+            }}
+            enteringVirtualRooom={enteringVirtualRooom}
+            />
+            ))}
+          </Grid>
+        )}
         </div>
     )
   );
