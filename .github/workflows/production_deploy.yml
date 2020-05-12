@@ -16,7 +16,7 @@ jobs:
         account_id: ${{ secrets.AWS_ACCOUNT_ID }}
         repo: sistema-blox/matrix/
         region: us-east-1
-        tags: latest,${{ github.sha }}
+        tags: latest
         create_repo: true
         dockerfile: Dockerfile
         path: /docker-images/matrix-prod/
