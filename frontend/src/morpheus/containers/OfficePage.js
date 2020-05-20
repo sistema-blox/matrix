@@ -82,7 +82,7 @@ const OfficePage = ({
         const joinParams = new URLSearchParams({
           meetingID: roomId,
           redirect: true,
-          password: environment.alwaysModerator ? environment.password : 'ap',
+          password: environment.alwaysModerator === 'true' ? environment.password : 'ap',
           fullName: userName,
         })
 
