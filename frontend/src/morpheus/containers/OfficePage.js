@@ -89,7 +89,7 @@ const OfficePage = ({
         const joinChecksum = sha1(`join${joinParams.toString()}${secret}`)
         joinParams.append('checksum', joinChecksum)
 
-        bbb.location.href = `${environment.url}/join?${joinParams.toString()}`
+        window.location.href = `${environment.url}/join?${joinParams.toString()}`
       })
       setIsLoading(false)
     } catch {
