@@ -92,7 +92,6 @@ const OfficePage = ({
       setIsLoading(false)
     } catch {
       console.log('não foi possível entrar na sala')
-      bbb.close()
     }
   }
 
