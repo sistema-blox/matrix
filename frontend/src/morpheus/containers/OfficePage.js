@@ -50,8 +50,6 @@ const OfficePage = ({
   const enteringVirtualRooom = (roomId, roomName) => {
     try {
       setIsLoading(true)
-      const bbb = window.open('', '_blank')
-      bbb.document.write('Carregando sala de aula, por favor aguarde...')
       const userName = JSON.parse(localStorage.getItem('user')).name
       const api = axios.create({
         baseURL: environment.url
