@@ -128,7 +128,7 @@ The login is so simple. You only need to configure the Google API credentials fo
 
 If you want run the **#matrix**, you need [docker-compose](https://docs.docker.com/compose/) and follow steps:
 
-1. Clone this repository `git clone git@github.com:ResultadosDigitais/matrix.git`
+1. Clone this repository `git clone git@github.com:sistema-blox/matrix.git`
 
 2. We are using Google to authorizations, you need create a credential [here](/docs/GOOGLE-CREDENTIAL-STEP-BY-STEP.md) you can follow step by step
 
